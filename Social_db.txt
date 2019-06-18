@@ -16,7 +16,7 @@ icat_id nvarchar(10) foreign key References category(cat_id) ,
 item_name nvarchar(30) NOT NULL,
 image nvarchar(50) NOT NULL,
 p_type nvarchar(10) NOT NULL,
-status nvarchar(10) NOT NULL
+status nvarchar(10) NOT NULL/*stock*/
 );
 create table donation(d_id nvarchar(10) Primary key,
 ditem_id nvarchar(10) foreign key References items(item_id),
