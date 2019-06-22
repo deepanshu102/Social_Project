@@ -1,16 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Social.login" %>
+﻿<%@ Page Title="Registration" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="register.aspx.cs" Inherits="Social.login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
     <link rel="stylesheet" href="css/style_login.css">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="main1" style="background-image: url('../img/body-bg.jpg')">
-        <br/><br/>
-        <div class="container1">
+    <div class="main" style="background-image: url('../img/body-bg.jpg')">
+
+        <div class="container">
             <div class="appointment-form" id="appointment-form">
                 <h2>education appointment form</h2>
                 <div class="form-group-1">
