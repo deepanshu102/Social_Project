@@ -122,7 +122,7 @@
 							 method="get" class="subscribe_form relative">
 								<div class="input-group d-flex flex-row">
 									<input name="EMAIL" placeholder="Enter Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '"
-									 required="" type="email">
+									 type="email">
 									<button class="btn sub-btn">
 										<span class="lnr lnr-arrow-right"></span>
 									</button>
