@@ -1,0 +1,26 @@
+//REGISTRATION USERS
+create procedure register 
+@id nvarchar(50),
+@name nvarchar(30),
+@address nvarchar(100),
+@phone nvarchar(10),
+@pwd nvarchar(30),
+@role nvarchar(2)
+as begin 
+begin try
+begin transaction
+insert into users (user_id,name,address,phone) Values(@id,@name,@address,@phone);
+insert into login(luser_id,password,role) values (@id,HASHBYTES('SHA2_512',@pwd),@role);
+commit transaction
+end try
+begin catch
+rollback transaction
+end catch
+end
+//Authenticate at login
+create procedure authenticate
+@id nvarchar(50),
+@pwd nvarchar(30)
+as begin
+select * from login,users where luser_id=@id and password=HASHBYTES('SHA2_512',@pwd) and luser_id=users.user_id
+end
