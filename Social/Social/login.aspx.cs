@@ -12,10 +12,11 @@ namespace Social
 {
     public partial class login : System.Web.UI.Page
     {
+        
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["socialString"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -42,8 +43,17 @@ namespace Social
                 cmd.Parameters.Add(new SqlParameter("@pwd", SqlDbType.NVarChar)).Value = TextBox2.Text;
 
                 SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows)
+                if (dr.Read())
+                {
+                    List<string> obj = new List<string>();
+
+                    obj.Add(dr["luser_id"].ToString());
+                    obj.Add(dr["role"].ToString());
+                    Session["user"]= obj;
+                    Response.Redirect("profile.aspx");
                     Response.Write("<script>alert('succesfull')</script>");
+
+                }
                 else
                     Response.Write("<script>alert('invalid')</script>");
 

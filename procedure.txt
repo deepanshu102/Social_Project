@@ -24,3 +24,108 @@ create procedure authenticate
 as begin
 select * from login,users where luser_id=@id and password=HASHBYTES('SHA2_512',@pwd) and luser_id=users.user_id
 end
+//ADD Items by Doner
+USE [Social]
+GO
+/****** Object:  StoredProcedure [dbo].[AddItems]    Script Date: 24-06-2019 15:37:00 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+alter procedure [dbo].[AddItems]
+@item_id nvarchar(10),
+@icat_id nvarchar(10),
+@item_name nvarchar(30),
+@image nvarchar(50),
+@qty nvarchar(10),
+@did nvarchar(10),
+@reason nvarchar(1000)='Secrete Donation',
+@uid nvarchar(10)
+As Begin
+Begin Try
+Begin Transaction
+insert into dbo.items(item_id,icat_iditem_name,image,qty) values(@item_id,@icat_id,@item_name,@image,@qty);
+insert into donation(d_id,ditem_id,duser_id,reason)Values(@did,@item_id,@uid,@reason);
+commit transaction
+
+End Try
+
+Begin Catch
+rollback Transaction
+End Catch
+
+
+End
+
+//View CAtegory
+USE [Social]
+GO
+/****** Object:  StoredProcedure [dbo].[view_category]    Script Date: 6/24/2019 3:33:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[view_category] 
+
+as begin 
+begin try
+select * from category
+
+end try
+begin catch
+
+end catch
+end
+//ADD Category by DEO
+USE [Social]
+GO
+/****** Object:  StoredProcedure [dbo].[Add_category]    Script Date: 6/24/2019 3:31:08 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+alter Procedure [dbo].[Add_category]
+@id nvarchar(10),
+@name nvarchar(30),
+@time nvarchar(10) = '1'
+As 
+Begin
+begin try
+begin transaction
+insert into category(cat_id,name,p_time) values(@id,@name,@time);
+commit transaction
+end try
+begin catch
+rollback transaction end catch
+end
+//View Items 
+USE [Social]
+GO
+/****** Object:  StoredProcedure [dbo].[view_items]    Script Date: 24-06-2019 15:39:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[view_items]
+
+As begin
+
+select * from items,category where items.icat_id=category.cat_id
+
+end
+
+create procedure changepassword
+@pwd nvarchar(30),
+@u_id nvarchar(50)
+As
+Begin
+Update login set password=@pwd where luser_id=@u_id
+End
+
+
+create procedure profile
+@uid nvarchar(50)
+as
+begin
+	select * from users,login where user_id=@uid and luser_id=user_id;
+	end
