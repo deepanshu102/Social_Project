@@ -68,7 +68,7 @@
                             
                             <%}
                             
-        if (((List<string>)Session["user"])[1].ToString() == "DE")//for DEO 
+       else if (((List<string>)Session["user"])[1].ToString() == "DE")//for DEO 
         {%>
                         
                              <asp:GridView ID="GridView4" runat="server" AutoGenerateColumns="False" DataKeyNames="item_id" DataSourceID="SqlDataSource1" GridLines="Vertical" HeaderStyle-BackColor="Tomato">
@@ -104,9 +104,88 @@
                             
                             <%}
 
-    }
-    else
-    {%>
+                                    else if (((List<string>)Session["user"])[1].ToString() == "NU") { %>
+
+                            	<div class="donate_box mb-30">
+								<div class="form-check">
+									<input type="radio" class="form-check-input" name="donation" id="ten_doller">
+									<div class="form-check-label d-flex justify-content-between" for="ten_doller">
+                                        <asp:DropDownList ID="DropDownList1"  runat="server" DataTextField="name" DataValueField="cat_id"></asp:DropDownList>
+										<!--<div class="label_text">
+											$10.00
+										</div-->
+										<div class="label_text">
+											Category Name
+										</div>
+									</div>
+								</div>
+							
+								<div class="form-check">
+									<input type="radio" class="form-check-input" name="donation" id="ten_doller">
+									<label class="form-check-label d-flex justify-content-between" for="ten_doller">
+                                        <asp:TextBox CssClass="label_text" ID="TextBox4" runat="server"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ControlToValidate="TextBox2" ValidationGroup="donate_validation" ForeColor="Red" ID="RequiredFieldValidator4" runat="server" ErrorMessage="Can't Empty"></asp:RequiredFieldValidator>
+										<!--<div class="label_text">
+											$10.00
+										</div-->
+										<div class="label_text">
+											Item Name
+										</div>
+									</label>
+								</div>
+								<div class="form-check">
+											<label class="form-check-label d-flex justify-content-between" for="ten_doller">
+                                        <asp:FileUpload ID="FileUpload2"  runat="server"  />
+										<!--<div class="label_text">
+											$10.00
+										</div-->
+										<div class="label_text">
+											Item Image
+										</div>
+									</label>
+								</div>
+							
+								<div class="form-check">
+									<input type="radio" class="form-check-input" name="donation" id="ten_doller">
+									<label class="form-check-label d-flex justify-content-between" for="ten_doller">
+                                        <asp:TextBox ID="TextBox5" CssClass="label_text" runat="server"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ControlToValidate="TextBox3" ValidationGroup="donate_validation" ForeColor="Red" ID="RequiredFieldValidator5" runat="server" ErrorMessage="Can't Empty"></asp:RequiredFieldValidator>
+										<!--<div class="label_text">
+											$10.00
+										</div-->
+										<div class="label_text">
+											Quantity
+										</div>
+									</label>
+								</div>
+							
+								<div class="form-check">
+									<input type="radio" class="form-check-input" name="donation" id="ten_doller">
+									<label class="form-check-label d-flex justify-content-between" for="ten_doller">
+                                        <asp:TextBox CssClass="label_text" ID="TextBox6" runat="server"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ControlToValidate="TextBox1" ValidationGroup="donate_validation" ForeColor="Red" ID="RequiredFieldValidator6" runat="server" ErrorMessage="Can't Empty"></asp:RequiredFieldValidator>
+										<!--<div class="label_text">
+											$10.00
+										</div-->
+										<div class="label_text">
+											Reason
+										</div>
+									</label>
+								</div>
+							</div accesskey>
+						
+							<div class="donate_box">
+                               <center>  <asp:Button ID="Button1"  OnClick="donate_Click" runat="server" CssClass="main_btn w-100" Text="Donate Now" ValidationGroup="donate_validation" /></center>
+							</div>
+                            
+                            
+                            
+                            <%}
+
+
+                                }
+                                else
+                                {%>
 							<div class="donate_box mb-30">
 								<div class="form-check">
 									<input type="radio" class="form-check-input" name="donation" id="ten_doller">

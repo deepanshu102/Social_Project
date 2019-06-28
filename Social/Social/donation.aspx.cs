@@ -18,11 +18,14 @@ namespace Social
         protected void Page_Load(object sender, EventArgs e)
         {
             con = new SqlConnection(ConfigurationManager.ConnectionStrings["socialString"].ConnectionString);
-            if (!IsPostBack)
-            { bind_category(); }
+             if (!IsPostBack)
+             { 
+            bind_category();
+        }
         }
         void bind_category()
         {
+            Response.Write("<script>alert('hello');</scipt>");
             try
             {
                 con.Open();
@@ -32,10 +35,10 @@ namespace Social
                 Category.DataBind();
 
             }
-            catch
-            { }
+            catch(Exception K)
+            { Response.Write(K); }
             finally
-            { }
+            { con.Close(); }
         }
         protected void donate_Click(object sender, EventArgs e)
         {
@@ -63,7 +66,7 @@ namespace Social
                             cmd.Parameters.AddWithValue("@did", SqlDbType.NVarChar).Value = "d" + d_id++;
                             cmd.Parameters.AddWithValue("@reason", SqlDbType.NVarChar).Value = TextBox1.Text;
                             // cmd.Parameters.AddWithValue("@uid", SqlDbType.NVarChar).Value = ((List < string > )Session["user"])[0].ToString();
-                            cmd.Parameters.AddWithValue("@uid", SqlDbType.NVarChar).Value = "nitesh.sahu7277@gmail.com";
+                            cmd.Parameters.AddWithValue("@uid", SqlDbType.NVarChar).Value = "Deepanshu@gmail.com";
 
                             if ((int)cmd.ExecuteNonQuery() >= 2)
                             {
@@ -72,7 +75,7 @@ namespace Social
                             }
                             else
                             {
-                                Response.Write("Fuck off");
+                                //Response.Write("Fuck off");
                             }
                         }
 

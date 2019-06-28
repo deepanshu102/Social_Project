@@ -97,6 +97,9 @@
     <Content Include="category.aspx" />
     <Content Include="Changepassword.aspx" />
     <Content Include="donation.aspx" />
+    <Content Include="donee_histroy.aspx" />
+    <Content Include="doner_history.aspx" />
+    <Content Include="get_donation.aspx" />
     <Content Include="Global.asax" />
     <Content Include="index.aspx" />
     <Content Include="login.aspx" />
@@ -142,6 +145,27 @@
     </Compile>
     <Compile Include="donation.aspx.designer.cs">
       <DependentUpon>donation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="donee_histroy.aspx.cs">
+      <DependentUpon>donee_histroy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="donee_histroy.aspx.designer.cs">
+      <DependentUpon>donee_histroy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="doner_history.aspx.cs">
+      <DependentUpon>doner_history.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="doner_history.aspx.designer.cs">
+      <DependentUpon>doner_history.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="get_donation.aspx.cs">
+      <DependentUpon>get_donation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="get_donation.aspx.designer.cs">
+      <DependentUpon>get_donation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

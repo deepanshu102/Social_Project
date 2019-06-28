@@ -18,7 +18,7 @@ rollback transaction
 end catch
 end
 //Authenticate at login
-create procedure authenticate
+create procedure Authenticate
 @id nvarchar(50),
 @pwd nvarchar(30)
 as begin
@@ -129,3 +129,10 @@ as
 begin
 	select * from users,login where user_id=@uid and luser_id=user_id;
 	end
+
+
+create procedure donation_history
+@uid nvarchar(50)
+as begin
+select * from items,donation where donation.duser_id=@uid and items.item_id=donation.ditem_id
+end

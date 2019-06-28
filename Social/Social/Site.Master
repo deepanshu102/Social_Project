@@ -112,7 +112,7 @@
 												<a class="nav-link" href="donation.aspx">ADD Donation</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link" href="doner_histroy.aspx">Donation History</a>
+												<a class="nav-link" href="doner_history.aspx">Donation History</a>
 											</li>
 										</ul>
 									</li>
