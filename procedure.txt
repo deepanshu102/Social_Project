@@ -136,3 +136,10 @@ create procedure donation_history
 as begin
 select * from items,donation where donation.duser_id=@uid and items.item_id=donation.ditem_id
 end
+
+create procedure donee_history
+@uid nvarchar(50)
+as begin
+select * from (select * from donation,items,users where donation.duser_id=users.user_id and items.item_id=donation.ditem_id) as doner,
+(select gdd_id,users.user_id as donee_id,users.address as donee_address,get_donation.g_date from get_donation,users where get_donation.user_id=@uid  and  get_donation.user_id=users.user_id) as donee where  donee.gdd_id=doner.d_id ;
+en
